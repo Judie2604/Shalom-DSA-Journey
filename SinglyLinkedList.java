@@ -80,6 +80,34 @@ public class SinglyLinkedList{
       head = head.next;
   }
 }
+public void deleteAtPosition(int position) {
+  if (head == null) {
+      System.out.println("List is empty");
+      return;
+  }
+
+  if (position == 1) {
+      head = head.next;
+      return;
+  }
+
+  Node current = head;
+  for (int i = 1; i < position - 1; i++) {
+      if (current.next == null) {
+          System.out.println("Position " + position + " is out of range");
+          return;
+      }
+      current = current.next;
+  }
+
+  if (current.next == null) {
+      System.out.println("Position " + position + " is out of range");
+      return;
+  }
+
+  current.next = current.next.next;
+}
+
       public static void main(String[] args){
         SinglyLinkedList list = new SinglyLinkedList();
         list.insert(10);
@@ -91,6 +119,7 @@ public class SinglyLinkedList{
         list.insertAtPosition(100,8);
         list.deletefromtheEnd();
         list.deletefromtheBeginning();
+        list.deleteAtPosition(3);
         list.display();
       }
       
